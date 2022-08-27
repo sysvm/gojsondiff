@@ -1,19 +1,19 @@
 # Go JSON Diff (and Patch)
 
 [![Wercker](https://app.wercker.com/status/00d70daaf40ce277fd4f10290f097b9d/s/master)][wercker]
-[![GoDoc](https://godoc.org/github.com/yudai/gojsondiff?status.svg)][godoc]
+[![GoDoc](https://godoc.org/github.com/sysvm/gojsondiff?status.svg)][godoc]
 [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg)][license]
 
 [wercker]: https://app.wercker.com/project/bykey/00d70daaf40ce277fd4f10290f097b9d
-[godoc]: https://godoc.org/github.com/yudai/gojsondiff
-[license]: https://github.com/yudai/gojsondiff/blob/master/LICENSE
+[godoc]: https://godoc.org/github.com/sysvm/gojsondiff
+[license]: https://github.com/sysvm/gojsondiff/blob/master/LICENSE
 
 ## How to use
 
 ### Installation
 
 ```sh
-go get github.com/yzhaoyu/gojsondiff
+go get github.com/sysvm/gojsondiff
 ```
 
 ### Comparing two JSON strings
@@ -28,7 +28,7 @@ This repository contains a package that you can use as a CLI tool.
 ### Installation
 
 ```sh
-go get github.com/yzhaoyu/gojsondiff/jd
+go get github.com/sysvm/gojsondiff/jd
 ```
 
 ### Usage
