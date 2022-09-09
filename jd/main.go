@@ -110,7 +110,7 @@ func main() {
 }
 
 func writeToFile(diffString string) {
-	f, err := os.Create("test.txt")
+	f, err := os.Create("diff.json")
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(4)
