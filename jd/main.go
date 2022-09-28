@@ -4,10 +4,17 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+	"path/filepath"
+	"strings"
 
 	"github.com/sysvm/gojsondiff/diff"
 	"github.com/sysvm/gojsondiff/formatter"
 	"github.com/urfave/cli"
+)
+
+const (
+	fileSuffix = ".json"
+	diffStr    = "diff"
 )
 
 func main() {
@@ -59,6 +66,10 @@ func main() {
 			os.Exit(2)
 		}
 
+		path, fileName := filepath.Split(aFilePath)
+		fmt.Printf("path: %s, fileName: %s\n", path, fileName)
+		file := strings.TrimSuffix(fileName, fileSuffix)
+
 		// Then, compare them
 		differ := diff.New()
 		d, err := differ.Compare(aString, bString)
@@ -99,7 +110,7 @@ func main() {
 				os.Exit(4)
 			}
 
-			writeToFile(diffString)
+			writeToFile(file, diffString)
 			//fmt.Print(diffString)
 			return cli.NewExitError("", 1)
 		}
@@ -109,22 +120,18 @@ func main() {
 	app.Run(os.Args)
 }
 
-func writeToFile(diffString string) {
-	f, err := os.Create("diff.json")
+func writeToFile(fileName, diffString string) {
+	f, err := os.Create(fileName + diffStr + fileSuffix)
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(4)
 	}
 	defer f.Close()
+
 	l, err := f.WriteString(diffString)
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(4)
 	}
 	fmt.Println(l, "bytes written successfully")
-	err = f.Close()
-	if err != nil {
-		fmt.Println(err)
-		os.Exit(4)
-	}
 }
